@@ -50,12 +50,17 @@ public class StringTest4a extends JFrame
   {
     String str = input.getText();
 
-    // ... insert code to process str or call a method here
-    // str = _______________________________ ;
+    String month = str.substring(0,2);
+    String day = str.substring(3,5);
+    String year = str.substring(6,10);
+    String converted = day + "-" + month + "-" + year;
 
-    result.setText(str);
+
+    result.setText(converted);
     input.selectAll();
   }
+
+
 
   public static void main(String[] args)
   {

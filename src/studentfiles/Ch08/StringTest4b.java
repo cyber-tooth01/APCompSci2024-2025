@@ -57,6 +57,7 @@ public class StringTest4b extends JFrame
     input.selectAll();
   }
 
+
   public static void main(String[] args)
   {
     StringTest4b window = new StringTest4b();
