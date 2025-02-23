@@ -23,6 +23,7 @@ public class chap6Exercise17a {
         return costOfBP + costOfNB;
     }
     public static void main (String [] args){
-        System.out.println(getOrderTotal(2,4));
+        boolean what = ((5.0/2) != 2.5);
+        System.out.println(what);
     }
 }
