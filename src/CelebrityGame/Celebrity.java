@@ -25,5 +25,9 @@ public class Celebrity {
         this.name = name;
     }
 
+    public String toString(){
+        return getName() + ": " + getHint();
+    }
+
 
 }
