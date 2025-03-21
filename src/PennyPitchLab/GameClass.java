@@ -16,7 +16,7 @@ public class GameClass {
     }
 
     public Scanner in = new Scanner(System.in);
-    Random random = new Random();
+    static Random random = new Random();
 
 
     public GameClass(){
@@ -37,23 +37,49 @@ public class GameClass {
 
     public static void main(String[] args) {
         GameClass gameTime = new GameClass();
-        gameTime.printBoard();
+        boolean gameOver = false;
+        int randRow = gameTime.randomize()[0];
+        int randCol = gameTime.randomize()[1];
+        int score = 0;
+        int usedSquareCounter = 0;
+
+        while (!gameOver) {
+            if (usedSquareCounter >= 25) {
+                gameOver = true;
+            } else {
+                while (gameTime.gameBoard[randRow][randCol] == 0) {
+                    int[] newCoords = gameTime.randomize();
+                    randRow = newCoords[0];
+                    randCol = newCoords[1];
+                }
+
+                score += gameTime.gameBoard[randRow][randCol];
+                gameTime.gameBoard[randRow][randCol] = 0;
+                usedSquareCounter++;
+
+                gameTime.printBoard();
+                System.out.println("\nThe current score is: " + score + "\n");
+            }
+        }
     }
 
     public void printBoard(){
         for (int i = 0; i < this.gameBoard[0].length; i++) {
             for (int j = 0; j < this.gameBoard.length; j++) {
-                System.out.print(" " + this.gameBoard[i][j] + " ");
+                if (this.gameBoard[i][j] == 0){
+                    System.out.print(" X ");
+                }else {
+                    System.out.print(" " + this.gameBoard[i][j] + " ");
+                }
                 if (j >= this.gameBoard.length - 1){
                     System.out.println();
                 }
             }
         }
     }
-
     public int[] randomize(){
-        int a = random.nextInt(6);
-        int b = random.nextInt(6);
+        int a = random.nextInt(5);
+        int b = random.nextInt(5);
 
         return new int[]{a, b};
     }
